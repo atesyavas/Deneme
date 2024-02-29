@@ -5,7 +5,7 @@
 #define MAX_LENGTH 1000
 
 
-void atbashEncrypt(char *text) {
+void atbashSifreleme(char *text) {
     int i;
     for (i = 0; i < strlen(text); i++) {
         if (text[i] >= 'A' && text[i] <= 'Z') {
@@ -23,19 +23,19 @@ int main() {
 
     file = fopen("metin.txt", "r");
     if (file == NULL) {
-        printf("Dosya açma hatasý!\n");
+        printf("Dosya aÃ§ma hatasÃ½!\n");
         return 1;
     }
     fgets(text, MAX_LENGTH, file);
     fclose(file);
 
  
-    atbashEncrypt(text);
+    atbashSifreleme(text);
 
   
     file = fopen("metin.txt", "w");
     if (file == NULL) {
-        printf("Dosya açma hatasý!\n");
+        printf("Dosya aÃ§ma hatasÃ½!\n");
         return 1;
     }
     fputs(text, file);
