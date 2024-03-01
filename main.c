@@ -17,29 +17,29 @@ void atbashSifreleme(char *text) {
 }
 
 int main() {
-    FILE *file;
+    FILE *dosya;
     char text[MAX_LENGTH];
 
 
-    file = fopen("metin.txt", "r");
+   dosya = fopen("metin.txt", "r");
     if (file == NULL) {
         printf("Dosya açma hatasý!\n");
         return 1;
     }
     fgets(text, MAX_LENGTH, file);
-    fclose(file);
+    fclose(dosya);
 
  
     atbashSifreleme(text);
 
   
-    file = fopen("metin.txt", "w");
-    if (file == NULL) {
+   dosya = fopen("metin.txt", "w");
+    if (dosya == NULL) {
         printf("Dosya açma hatasý!\n");
         return 1;
     }
-    fputs(text, file);
-    fclose(file);
+    fputs(text, dosya);
+    fclose(dosya);
 
     printf("Metin basariyla Atbash sifreleme yontemiyle sifrelendi ve metin.txt dosyasina yazildi.\n");
 
