@@ -22,11 +22,11 @@ int main() {
 
 
    dosya = fopen("metin.txt", "r");
-    if (file == NULL) {
+    if (dosya == NULL) {
         printf("Dosya açma hatasý!\n");
         return 1;
     }
-    fgets(text, MAX_LENGTH, file);
+    fgets(text, MAX_LENGTH, dosya);
     fclose(dosya);
 
  
