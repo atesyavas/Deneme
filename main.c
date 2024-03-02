@@ -2,9 +2,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define MAX_LENGTH 1000
-
-
 void atbashSifreleme(char *text) {
     int i;
     for (i = 0; i < strlen(text); i++) {
@@ -18,15 +15,15 @@ void atbashSifreleme(char *text) {
 
 int main() {
     FILE *dosya;
-    char text[MAX_LENGTH];
+    char text[100];
 
 
    dosya = fopen("metin.txt", "r");
     if (dosya == NULL) {
-        printf("Dosya açma hatasý!\n");
+        printf("Dosya acma hatasi!\n");
         return 1;
     }
-    fgets(text, MAX_LENGTH, dosya);
+    fgets(text, 100 , dosya);
     fclose(dosya);
 
  
