@@ -32,14 +32,36 @@ int main() {
   
    dosya = fopen("metin.txt", "w");
     if (dosya == NULL) {
-        printf("Dosya açma hatasý!\n");
+        printf("Dosya açma hatasy!\n");
         return 1;
     }
     fputs(text, dosya);
     fclose(dosya);
 
     printf("Metin basariyla Atbash sifreleme yontemiyle sifrelendi ve metin.txt dosyasina yazildi.\n");
-
+    
+    int sifre=4141;
+    int anahtar;
+  	printf("Metni orijinal haline cevirmek icin lutfen anahtari girin: ");
+  	scanf("%d",&anahtar);
+	
+	if(anahtar==sifre)
+	{
+		printf("Tebrikler dogru anahtar! Metin orijinal haline cevirildi.\n");
+		atbashSifreleme(text);
+	
+		dosya = fopen("metin.txt", "w");
+    if (dosya == NULL) {
+        printf("Dosya açma hatasy!\n");
+        return 1;
+    }
+    fputs(text, dosya);
+    fclose(dosya);
+		
+	}
+	else
+	printf("Anahtar yanlis girildi!");
+	
+	
     return 0;
 }
-
