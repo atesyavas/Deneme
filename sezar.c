@@ -58,9 +58,12 @@ void sezarCoz(char sifreli[], int kaydir ) //şifre çözme fonksiyonu oluşturm
 int main() {
     char metin[100];
     int kaydirma;
-  
 
-  
+    // Kullanıcı uyarısı
+    printf("\n------------------------------------------------------");
+    printf("\nNOT:Metin yalnizca dogal sayi ve harflerden olusmalidir!\n");
+    printf("-------------------------------------------------------\n\n");
+
     // Kullanıcıdan metni ve kaydırma miktarı alma
     printf("Sifrelemek istediginiz metni giriniz--> ");
     scanf("%s", metin);
