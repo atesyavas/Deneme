@@ -15,7 +15,7 @@ void atbashSifreleme(char *text) {
 
 int main() {
     FILE *dosya;
-    char text[100];
+    char text[9999];
 
 
    dosya = fopen("metin.txt", "r");
@@ -23,7 +23,7 @@ int main() {
         printf("Dosya acma hatasi!\n");
         return 1;
     }
-    fgets(text, 100 , dosya);
+    fgets(text, 9999 , dosya);
     fclose(dosya);
 
  
