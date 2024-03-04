@@ -13,9 +13,17 @@ void sezarSifrele(char metin[], int kaydirma) // şifreleme fonksiyonu oluşturm
         {
             metin[i] = 'a' + (metin[i] - 'a' + kaydirma) % 26; 
         }
+            
         // Büyük harfi şifreleme
         else if (metin[i] >= 'A' && metin[i] <= 'Z') {
             metin[i] = 'A' + (metin[i] - 'A' + kaydirma) % 26;
+
+        //sayıları şifreleme
+        else if(metin[i]>='0'&&metin[i]<='9')
+        {
+            metin[i]='0'+(metin[i]-'0'+kaydirma)%10;
+        }
+            
         }
         i++;
     }
@@ -37,6 +45,11 @@ void sezarCoz(char sifreli[], int kaydir ) //şifre çözme fonksiyonu oluşturm
         {
             sifreli[j]='Z'+(sifreli[j]-'Z'-kaydir)%26;
         }
+        //sayıların şifresini çözme
+        else if(sifreli[j]>='0'&&sifreli[j]<='9')
+        {
+            sifreli[j]='9'+(sifreli[j]-'9'-kaydir)%10;
+        }
         
         j++;
     }
@@ -47,6 +60,7 @@ int main() {
     int kaydirma;
   
 
+  
     // Kullanıcıdan metni ve kaydırma miktarı alma
     printf("Sifrelemek istediginiz metni giriniz--> ");
     scanf("%s", metin);
