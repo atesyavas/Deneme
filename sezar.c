@@ -27,10 +27,17 @@ void sezarCoz(char sifreli[], int kaydir ) //şifre çözme fonksiyonu oluşturm
 
     while(sifreli[j]!='\0')
     {
+        //küçük harfin şifresini çözme
         if(sifreli[j]>='a'&&sifreli[j]<='z')
         {
             sifreli[j]='z'+(sifreli[j]-'z'-kaydir)%26;
         }
+        //büyük harfin şifresini çözme
+        else if(sifreli[j]>='A'&&sifreli[j]<='Z')
+        {
+            sifreli[j]='Z'+(sifreli[j]-'Z'-kaydir)%26;
+        }
+        
         j++;
     }
 }
