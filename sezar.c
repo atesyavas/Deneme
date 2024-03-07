@@ -18,7 +18,7 @@ void sezarSifrele(char metin[], int kaydirma) // şifreleme fonksiyonu oluşturm
         else if (metin[i] >= 'A' && metin[i] <= 'Z') {
             metin[i] = 'A' + (metin[i] - 'A' + kaydirma) % 26;
 
-        //sayıları şifreleme
+        //doğal sayıları şifreleme
         else if(metin[i]>='0'&&metin[i]<='9')
         {
             metin[i]='0'+(metin[i]-'0'+kaydirma)%10;
@@ -59,7 +59,7 @@ int main() {
     char metin[100];
     int kaydirma;
 
-    // Kullanıcı uyarısı
+    // Kullanıcıyı uyarma
     printf("\n------------------------------------------------------");
     printf("\nNOT:Metin yalnizca dogal sayi ve harflerden olusmalidir!\n");
     printf("-------------------------------------------------------\n\n");
@@ -74,13 +74,27 @@ int main() {
     printf("Sifre kaydirma miktarini giriniz--> ");
     scanf("%d", &kaydirma);
 
-    // Şifreleyecek fonksiyonu çağırma
+     // Dosyayı açma
+    FILE *dosya = fopen(dosyaAdi, "w");
+    if (dosya == NULL) 
+    {
+        printf("Dosya acilamadi!\n");
+        return 1;
+    }
+
+    // Şifreyi çözecek fonksiyonu çağırma
     sezarSifrele(metin, kaydirma);
     printf("Sifrelenmis metin=> %s\n", metin);
 
     //Şifre çözecek fonksiyonu çağırma
     sezarCoz(metin,kaydirma);
     printf("Sifresi cozulmus metin=> %s",metin);
+
+    // Dosyayı kapatma
+    fclose(dosya);
+
+    printf("Sifrelenmis ve sifresi cozulmus metin dosyaya yazildi.\n");
+
 
     return 0;
 }
