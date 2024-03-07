@@ -3,7 +3,8 @@
 #include <string.h>
 
 void shiftChar(char *metin, int shift, int direction) {
-    for (int i = 0; i < strlen(metin); i++) {
+    int i;
+	for (i = 0; i < strlen(metin); i++) {
         if (metin[i] >= 'a' && metin[i] <= 'z') {
             metin[i] = 'a' + (metin[i] - 'a' + shift * direction + 26) % 26; 
         } else if (metin[i] >= 'A' && metin[i] <= 'Z') {
@@ -16,7 +17,8 @@ void shiftChar(char *metin, int shift, int direction) {
 
 void atbashSifreleme(char *metin) {
     int uzunluk = strlen(metin);
-    for (int i = 0; i < uzunluk; i++) {
+    int i;
+	for (i = 0; i < uzunluk; i++) {
         if (metin[i] >= 'a' && metin[i] <= 'z') {
             metin[i] = 'z' - (metin[i] - 'a');
         } else if (metin[i] >= 'A' && metin[i] <= 'Z') {
@@ -53,10 +55,9 @@ int main() {
     printf("\nMetni giriniz: ");
     scanf("%s", metin);
 
-    printf("Sifre kaydirma miktarini giriniz: ");
-    scanf("%d", &shift);
-
     if (operation == 1 || operation == 3) {
+        printf("Sifre kaydirma miktarini giriniz: ");
+        scanf("%d", &shift);
         shiftChar(metin, shift, operation == 1 ? 1 : -1);
     } else if (operation == 2) {
         atbashSifreleme(metin);
