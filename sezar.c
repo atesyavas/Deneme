@@ -63,7 +63,11 @@ int main() {
     printf("\n------------------------------------------------------");
     printf("\nNOT:Metin yalnizca dogal sayi ve harflerden olusmalidir!\n");
     printf("-------------------------------------------------------\n\n");
-
+    
+    // Kullanıcıdan dosya adını alma
+    printf("Dosya adini girin: ");
+    scanf("%s", dosyaAdi);
+    
     // Kullanıcıdan metni ve kaydırma miktarı alma
     printf("Sifrelemek istediginiz metni giriniz--> ");
     scanf("%s", metin);
