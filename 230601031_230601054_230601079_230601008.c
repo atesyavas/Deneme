@@ -87,7 +87,8 @@ int main() {
     scanf("%d", &secim);
 
     printf("\nMetni giriniz: ");
-    scanf("%s", metin);
+    getchar(); // İlk satır sonu karakterini temizle
+    fgets(metin, sizeof(metin), stdin);
 
     FILE *dosya = fopen(dosyaAdi, "w");
     if (dosya == NULL) {
