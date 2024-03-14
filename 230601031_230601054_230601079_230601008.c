@@ -62,7 +62,7 @@ void atbashSifreleme(char *text) {
     for (i = 0; i < strlen(text); i++) {
         if (isalpha(text[i])) {
             char base = islower(text[i]) ? 'a' : 'A';
-            text[i] = base + ('z' - (tolower(text[i]) - 'a'));
+            text[i] = base + ('z' - tolower(text[i]));
         } else if (isdigit(text[i])) {
             text[i] = '9' - (text[i] - '0');
         }
@@ -105,7 +105,7 @@ int main() {
             break;
         case 2:
             atbashSifreleme(metin);
-            fprintf(dosya, "Sifresi cozulmus metin: %s", metin);
+            fprintf(dosya, "%s", metin);
             printf("Atbash sifre cozme ile metin dosyaya yazildi.\n");
             break;
         case 3:
