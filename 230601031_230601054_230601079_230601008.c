@@ -1,75 +1,98 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <ctype.h> // Şifrelemeler için gerekli kütüphanedir. islower, isalpha, tolower, isdigit gibi fonksiyonları içerir
+#include <ctype.h> // Sifrelemeler icin gerekli kutuphanedir. islower, isalpha, tolower, isdigit gibi fonksiyonlari icerir
 
-// Vigenere şifreleme fonksiyonu
-void vigenere_encrypt(char *text, char *key) {
+// Vigenere Sifreleme fonksiyonu
+void vigenere_encrypt(char *text, char *key) 
+{
     int text_len = strlen(text);
     int key_len = strlen(key);
     int i;
 
-    for (i = 0; i < text_len; i++) {
-        if (isalpha(text[i])) { // Harf kontrolü
-            char base = islower(text[i]) ? 'a' : 'A'; // Küçük harf kontrolü
-            text[i] = ((text[i] - base + key[i % key_len] - 'a') % 26) + base; // Vigenere şifreleme
+    for (i = 0; i < text_len; i++) 
+    {
+        if (isalpha(text[i])) // Harf kontrolu
+        { 
+            char base = islower(text[i]) ? 'a' : 'A'; // Kucuk harf kontrolu
+            text[i] = ((text[i] - base + key[i % key_len] - 'a') % 26) + base; // Vigenere Sifreleme
         }
     }
 }
 
-// Vigenere şifresini çözen fonksiyon
-void vigenere_decrypt(char *text, char *key) {
+// Vigenere Sifresini cozen fonksiyon
+void vigenere_decrypt(char *text, char *key) 
+{
     int text_len = strlen(text);
     int key_len = strlen(key);
     int i;
 
-    for (i = 0; i < text_len; i++) {
-        if (isalpha(text[i])) { // Harf kontrolü
-            char base = islower(text[i]) ? 'a' : 'A'; // Küçük harf kontrolü
-            text[i] = ((text[i] - base - (key[i % key_len] - 'a') + 26) % 26) + base; // Vigenere şifresini çözme
+    for (i = 0; i < text_len; i++) 
+    {
+        if (isalpha(text[i])) // Harf kontrolu
+        { 
+            char base = islower(text[i]) ? 'a' : 'A'; // Kucuk harf kontrolu
+            text[i] = ((text[i] - base - (key[i % key_len] - 'a') + 26) % 26) + base; // Vigenere Sifresini cozme
         }
     }
 }
 
-// Sezar şifreleme fonksiyonu
-void sezarSifrele(char metin[], int kaydirma) {
+// Sezar Sifreleme fonksiyonu
+void sezarSifrele(char metin[], int kaydirma) 
+{
     int i = 0;
 
-    while (metin[i] != '\0') {
-        if (isalpha(metin[i])) { // Harf kontrolü
-            char base = islower(metin[i]) ? 'a' : 'A'; // Küçük harf kontrolü
-            metin[i] = ((metin[i] - base + kaydirma) % 26) + base; // Sezar şifreleme
-        } else if (isdigit(metin[i])) { // Sayı kontrolü
-            metin[i] = ((metin[i] - '0' + kaydirma) % 10) + '0'; // Sezar şifreleme (sayılar için)
+    while (metin[i] != '\0') 
+    {
+        if (isalpha(metin[i])) // Harf kontrolu
+        { 
+            char base = islower(metin[i]) ? 'a' : 'A'; // Kucuk harf kontrolu
+            metin[i] = ((metin[i] - base + kaydirma) % 26) + base; // Sezar sifreleme
+        } 
+        else if (isdigit(metin[i])) // Sayi kontrolu
+        { 
+            metin[i] = ((metin[i] - '0' + kaydirma) % 10) + '0'; // Sezar sifreleme (sayilar icin)
         }
+
         i++;
     }
 }
 
-// Sezar şifresini çözen fonksiyon
-void sezarCoz(char sifreli[], int kaydir) {
+// Sezar sifresini cozen fonksiyon
+void sezarCoz(char sifreli[], int kaydir) 
+{
     int j = 0;
 
-    while (sifreli[j] != '\0') {
-        if (isalpha(sifreli[j])) { // Harf kontrolü
-            char base = islower(sifreli[j]) ? 'a' : 'A'; // Küçük harf kontrolü
-            sifreli[j] = ((sifreli[j] - base - kaydir + 26) % 26) + base; // Sezar şifresini çözme
-        } else if (isdigit(sifreli[j])) { // Sayı kontrolü
-            sifreli[j] = ((sifreli[j] - '0' - kaydir + 10) % 10) + '0'; // Sezar şifresini çözme (sayılar için)
+    while (sifreli[j] != '\0') 
+    {
+        if (isalpha(sifreli[j])) // Harf kontrolu
+        { 
+            char base = islower(sifreli[j]) ? 'a' : 'A'; // Kucuk harf kontrolu
+            sifreli[j] = ((sifreli[j] - base - kaydir + 26) % 26) + base; // Sezar sifresini cozme
+        } 
+        else if (isdigit(sifreli[j])) // Sayi kontrolu
+        { 
+            sifreli[j] = ((sifreli[j] - '0' - kaydir + 10) % 10) + '0'; // Sezar sifresini cozme (sayilar icin)
         }
+
         j++;
     }
 }
 
-// Atbash şifreleme fonksiyonu
-void atbashSifreleme(char *text) {
+// Atbash sifreleme fonksiyonu
+void atbashSifreleme(char *text) 
+{
     int i;
-    for (i = 0; i < strlen(text); i++) { // Döngü metnin uzunluğuna göre çalışır
-        if (isalpha(text[i])) { // Karakterin harf olup olmadığını kontrol eder
-            char base = islower(text[i]) ? 'a' : 'A'; // Karakterin küçük harf olup olmadığını kontrol eder. Küçükse 'a', büyükse 'A' atanır 
+    for (i = 0; i < strlen(text); i++) // Dongu metnin uzunluguna gore calisir
+    { 
+        if (isalpha(text[i]))  // Karakterin harf olup olmadigini kontrol eder
+        {
+            char base = islower(text[i]) ? 'a' : 'A'; // Karakterin kucuk harf olup olmadigini kontrol eder. Kucukkse 'a', buyukse 'A' atanir 
             text[i] = base + ('z' - tolower(text[i])); // Karakterin tersini bulur, 'a' ve 'z', 'A' ve 'Z' gibi
-        } else if (isdigit(text[i])) { // Karakter harf değilse sayı olup olmadığını kontrol eder 
-            text[i] = '9' - (text[i] - '0'); // Karakter sayı ise sayının tersini bulur. '0' karakteri '9'a , '1' karakteri '8'e gibi
+        } 
+        else if (isdigit(text[i])) 
+        { // Karakter harf degilse sayi olup olmadigini kontrol eder 
+            text[i] = '9' - (text[i] - '0'); // Karakter sayi ise sayinin tersini bulur. '0' karakteri '9'a , '1' karakteri '8'e gibi
         }
     }
 }
@@ -92,16 +115,18 @@ int main() {
     scanf("%d", &secim);
 
     printf("\nMetni giriniz: ");
-    getchar(); // İlk satır sonu karakterini temizle
+    getchar(); // ilk satir sonu karakterini temizle
     fgets(metin, sizeof(metin), stdin);
 
     FILE *dosya = fopen(dosyaAdi, "w");
-    if (dosya == NULL) {
+    if (dosya == NULL) 
+    {
         printf("Dosya acilamadi!\n");
         return 1;
     }
 
-    switch (secim) {
+    switch (secim) 
+    {
         case 1:
             printf("Sifre kaydirma miktarini giriniz: ");
             scanf("%d", &kaydirma);
@@ -145,3 +170,4 @@ int main() {
     fclose(dosya);
     return 0;
 }
+
